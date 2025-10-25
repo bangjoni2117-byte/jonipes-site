@@ -22,9 +22,26 @@
     .btn-ghost{background:#2b2b2b; color:#ddd}
     .rounded-lg{border-radius:12px}
     .shadow-soft{box-shadow:0 6px 18px rgba(0,0,0,.45)}
-    /* slider image sizing */
     .slide-img{min-width:260px; max-width:420px; height:160px; object-fit:cover; border-radius:10px}
     @media(min-width:768px){ .slide-img{height:200px} }
+
+    /* Animasi fade-in untuk transisi halus */
+    #configDetail, #stockList {transition: all 0.3s ease;}
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {animation: fade-in 0.4s ease both;}
+
+    /* Tombol aktif (glow neon) */
+    .config-btn.active, .stock-btn.active {
+      background: var(--neon);
+      color: #000;
+      box-shadow: 0 0 12px rgba(167,255,53,0.6);
+      transition: all 0.25s ease;
+    }
+
+    html { scroll-behavior: smooth; }
   </style>
 </head>
 <body class="antialiased">
@@ -42,10 +59,6 @@
       <a href="#play" class="hover:text-white">PLAY YOUR GAME</a>
       <a href="#joniapp" class="hover:text-white">JONI APP</a>
     </nav>
-
-    <div class="md:hidden">
-      <button id="menuToggle" class="btn-ghost px-3 py-2 rounded-lg">Menu</button>
-    </div>
   </header>
 
   <main class="px-4">
@@ -60,7 +73,7 @@
     <!-- CONFIG -->
     <section id="config" class="py-6">
       <h2 class="text-2xl font-bold" style="color:var(--neon)">CONFIG</h2>
-      <p class="text-sm" style="color:var(--muted)">Pilih game untuk melihat daftar config (slide). Klik <em>Download Config</em> untuk buka link.</p>
+      <p class="text-sm" style="color:var(--muted)">Pilih game untuk melihat daftar config. Klik <em>Download Config</em> untuk buka link.</p>
 
       <div class="grid grid-cols-2 md:grid-cols-5 gap-3 my-4">
         <button class="config-btn btn-ghost p-3 rounded-lg" data-game="efootball">EFOOTBALL</button>
@@ -110,7 +123,6 @@
       <h2 class="text-2xl font-bold" style="color:var(--neon)">JONI APP</h2>
       <p style="color:var(--muted)">COMING SOON 🚀</p>
     </section>
-
   </main>
 
   <footer class="py-6 text-center" style="color:var(--muted)">
@@ -118,12 +130,8 @@
     <a href="https://wa.me/6289507676856" style="color:var(--neon)">0895-0767-6856</a>
   </footer>
 
-  <!-- SCRIPT -->
   <script>
-  // ===== DATA =====
   const userWA = '6289507676856';
-
-  // configs: each item may have multiple images (for slide), title, desc, link
   const configs = {
     efootball: [
       { title:'EFOOTBALL Smooth Pro', imgs:['./assets/efo1.jpg','./assets/efo2.jpg'], desc:'Stabil & responsif. Cocok kompetisi.', link:'https://example.com/efo-pro.zip' },
@@ -143,8 +151,6 @@
       { title:'HOK Smooth Battle', imgs:['./assets/hok1.jpg'], desc:'Stabil di semua device.', link:'https://example.com/hok-smooth.zip' }
     ]
   };
-
-  // stocks: unchanged
   const stocks = {
     efootball:[{title:'EFOOTBALL Legend', price:75000, imgs:['./assets/eacc1.jpg','./assets/eacc2.jpg','./assets/eacc3.jpg','./assets/eacc4.jpg'], desc:'Level 50, pemain bintang & GP tinggi.'}],
     pubg:[{title:'PUBG Elite', price:120000, imgs:['./assets/pubgacc1.jpg','./assets/pubgacc2.jpg','./assets/pubgacc3.jpg','./assets/pubgacc4.jpg'], desc:'Rank Crown, skin langka.'}],
@@ -153,110 +159,83 @@
     hok:[{title:'HOK Pro Account', price:100000, imgs:['./assets/hokacc1.jpg','./assets/hokacc2.jpg','./assets/hokacc3.jpg','./assets/hokacc4.jpg'], desc:'Semua hero & skin event.'}]
   };
 
-  // ===== HELPERS =====
-  function clearActive(selector){ document.querySelectorAll(selector).forEach(s=>s.classList.remove('bg-lime-500','text-black')); }
-
-  // create slider HTML from imgs array
-  function createSliderHTML(imgs){
-    // horizontal scroll container, images inline
-    return `<div class="flex gap-3 overflow-x-auto no-scrollbar p-1">${imgs.map(i=>`<img src="${i}" class="slide-img" onerror="this.src='https://placehold.co/420x200/111/0f0?text=No+Image';">`).join('')}</div>`;
-  }
-
-  // ===== CONFIG HANDLERS (baru: mirip stok akun) =====
-  document.querySelectorAll('.config-btn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const game = btn.dataset.game;
-      showConfigs(game);
-      clearActive('.config-btn');
-      btn.classList.add('bg-lime-500','text-black');
-    });
-  });
-
-  function showConfigs(game){
-    const target = document.getElementById('configDetail');
-    document.getElementById('configPlaceholder').style.display='none';
-    target.innerHTML = '';
-    const list = configs[game] || [];
-    if(list.length === 0){
-      target.innerHTML = `<div style="color:var(--muted)">Belum ada config untuk game ini.</div>`;
-      target.insertAdjacentHTML('beforeend', backToConfigButton());
-      return;
-    }
-    list.forEach(item=>{
-      const slider = createSliderHTML(item.imgs);
-      const html = `
-        <div class="card p-4 rounded-lg mb-4 shadow-soft">
-          <h3 style="color:var(--neon)" class="text-xl font-bold mb-2">${item.title}</h3>
-          ${slider}
-          <p style="color:var(--muted)" class="mt-3">${item.desc}</p>
-          <div class="mt-3">
-            <a href="${item.link}" target="_blank" rel="noopener" class="btn-primary px-4 py-2 rounded-lg">Download Config</a>
-          </div>
-        </div>`;
-      target.insertAdjacentHTML('beforeend', html);
-    });
-    target.insertAdjacentHTML('beforeend', backToConfigButton());
-  }
-
-  function backToConfigButton(){ return `<div class="text-center mt-6"><button onclick="resetConfigView()" class="btn-ghost px-4 py-2 rounded-lg">🔙 Kembali ke Pilihan Game</button></div>`; }
-  function resetConfigView(){ document.getElementById('configDetail').innerHTML = `<div id="configPlaceholder" style="color:var(--muted)">Pilih game untuk melihat konfigurasi yang tersedia.</div>`; clearActive('.config-btn'); }
-
-  // ===== STOCK HANDLERS (sama seperti sebelumnya) =====
-  document.querySelectorAll('.stock-btn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const game = btn.dataset.game;
-      showStocks(game);
-      clearActive('.stock-btn');
-      btn.classList.add('bg-lime-500','text-black');
-    });
-  });
-
-  function showStocks(game){
-    const target = document.getElementById('stockList');
-    target.innerHTML = '';
-    const list = stocks[game] || [];
-    if(list.length === 0){
-      target.innerHTML = `<div style="color:var(--muted)">Belum ada stok akun untuk game ini.</div>`;
-      target.insertAdjacentHTML('beforeend', backToStockButton());
-      return;
-    }
-    list.forEach(a=>{
-      const slider = createSliderHTML(a.imgs);
-      const html = `
-        <div class="card p-4 rounded-lg mb-6 shadow-soft">
-          <h3 style="color:var(--neon)" class="text-xl font-bold mb-2">${a.title}</h3>
-          ${slider}
-          <p style="color:var(--neon)" class="mt-3 font-bold">Rp ${a.price.toLocaleString()}</p>
-          <p style="color:var(--muted)">${a.desc}</p>
-          <div class="mt-3">
-            <button onclick="buyAccount('${a.title}')" class="btn-primary px-4 py-2 rounded-lg">Beli Akun</button>
-          </div>
-        </div>`;
-      target.insertAdjacentHTML('beforeend', html);
-    });
-    target.insertAdjacentHTML('beforeend', backToStockButton());
-  }
-
-  function backToStockButton(){ return `<div class="text-center mt-6"><button onclick="resetStockView()" class="btn-ghost px-4 py-2 rounded-lg">🔙 Kembali ke Pilihan Game</button></div>`; }
-  function resetStockView(){ document.getElementById('stockList').innerHTML = `<div style="color:var(--muted)">Pilih game untuk lihat stok akun.</div>`; clearActive('.stock-btn'); }
-
+  function createSliderHTML(imgs){return `<div class="flex gap-3 overflow-x-auto no-scrollbar p-1">${imgs.map(i=>`<img src="${i}" class="slide-img" onerror="this.src='https://placehold.co/420x200/111/0f0?text=No+Image';">`).join('')}</div>`;}
   function buyAccount(title){
     const teks = encodeURIComponent('Saya ingin beli akun ' + title + ' - via DANA/OVO/GOPAY/QRIS/BCA');
     window.open('https://wa.me/' + '62' + userWA.replace(/^0/,'') + '?text=' + teks, '_blank');
   }
 
-  // ===== PLAY =====
-  document.querySelectorAll('.play-btn').forEach(b=>{
-    b.addEventListener('click', ()=>{
-      const pkg = b.dataset.package;
-      const store = `https://play.google.com/store/apps/details?id=${pkg}`;
-      window.open(store, '_blank');
+  /* CONFIG */
+  document.querySelectorAll('.config-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const game = btn.dataset.game;
+      showConfigs(game);
+      document.querySelectorAll('.config-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
     });
   });
+  function showConfigs(game){
+    const target = document.getElementById('configDetail');
+    document.getElementById('configPlaceholder').style.display='none';
+    target.classList.add('opacity-0','translate-y-3');
+    setTimeout(()=>{
+      target.innerHTML='';
+      const list=configs[game]||[];
+      if(list.length===0){target.innerHTML=`<div style="color:var(--muted)">Belum ada config untuk game ini.</div>`;}
+      else list.forEach(item=>{
+        const slider=createSliderHTML(item.imgs);
+        const html=`
+        <div class="card p-4 rounded-lg mb-6 shadow-soft animate-fade-in">
+          <h3 class="text-xl font-bold mb-2" style="color:var(--neon)">${item.title}</h3>
+          ${slider}
+          <p class="mt-3" style="color:var(--muted)">${item.desc}</p>
+          <div class="mt-3">
+            <a href="${item.link}" target="_blank" class="btn-primary px-4 py-2 rounded-lg">Download Config</a>
+          </div>
+        </div>`;
+        target.insertAdjacentHTML('beforeend',html);
+      });
+      target.classList.remove('opacity-0','translate-y-3');
+    },150);
+  }
 
-  // ===== mobile menu =====
-  document.getElementById('menuToggle')?.addEventListener('click', ()=>{ alert('Gunakan link menu di bagian atas untuk navigasi.'); });
+  /* STOK */
+  document.querySelectorAll('.stock-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const game = btn.dataset.game;
+      showStocks(game);
+      document.querySelectorAll('.stock-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+  function showStocks(game){
+    const target=document.getElementById('stockList');
+    target.innerHTML='';
+    const list=stocks[game]||[];
+    if(list.length===0){target.innerHTML=`<div style="color:var(--muted)">Belum ada stok akun untuk game ini.</div>`;return;}
+    list.forEach(a=>{
+      const slider=createSliderHTML(a.imgs);
+      const html=`
+      <div class="card p-4 rounded-lg mb-6 shadow-soft animate-fade-in">
+        <h3 class="text-xl font-bold mb-2" style="color:var(--neon)">${a.title}</h3>
+        ${slider}
+        <p class="mt-2 font-bold" style="color:var(--neon)">Rp ${a.price.toLocaleString()}</p>
+        <p style="color:var(--muted)">${a.desc}</p>
+        <div class="mt-3">
+          <button onclick="buyAccount('${a.title}')" class="btn-primary px-4 py-2 rounded-lg">Beli Akun</button>
+        </div>
+      </div>`;
+      target.insertAdjacentHTML('beforeend',html);
+    });
+  }
 
+  /* PLAY */
+  document.querySelectorAll('.play-btn').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      const pkg=b.dataset.package;
+      window.open(`https://play.google.com/store/apps/details?id=${pkg}`,'_blank');
+    });
+  });
   </script>
 </body>
 </html>
