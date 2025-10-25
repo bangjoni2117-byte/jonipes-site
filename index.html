@@ -60,14 +60,14 @@
   <section class="text-center py-10">
     <h1 class="text-3xl md:text-4xl font-extrabold">Selamat Datang di <span style="color:var(--neon)">JONI PES</span></h1>
     <p class="mt-2" style="color:var(--muted);max-width:800px;margin:8px auto;">
-      Config per-game, Stok Akun (slide gambar), tombol pembayaran (DANA/OVO/GOPAY/QRIS/BCA) via WhatsApp, dan Play Your Game.
+      Config & Stok Akun hanya tersedia untuk <span style="color:var(--neon)">EFOOTBALL</span>.  
+      Game lain masih <em>Not Ready</em>.
     </p>
   </section>
 
   <!-- CONFIG -->
   <section id="config" class="py-6">
     <h2 class="text-2xl font-bold" style="color:var(--neon)">CONFIG</h2>
-    <p class="text-sm" style="color:var(--muted)">Pilih game untuk melihat daftar config.</p>
     <div class="grid grid-cols-2 md:grid-cols-5 gap-3 my-4">
       <button class="config-btn btn-ghost p-3 rounded-lg" data-game="efootball">EFOOTBALL</button>
       <button class="config-btn btn-ghost p-3 rounded-lg" data-game="pubg">PUBG</button>
@@ -76,14 +76,13 @@
       <button class="config-btn btn-ghost p-3 rounded-lg" data-game="hok">HOK</button>
     </div>
     <div id="configDetail" class="space-y-6">
-      <div id="configPlaceholder" style="color:var(--muted)">Pilih game untuk melihat konfigurasi yang tersedia.</div>
+      <div id="configPlaceholder" style="color:var(--muted)">Pilih game untuk melihat konfigurasi.</div>
     </div>
   </section>
 
   <!-- STOK AKUN -->
   <section id="stok-akun" class="py-6">
     <h2 class="text-2xl font-bold" style="color:var(--neon)">STOK AKUN</h2>
-    <p class="text-sm" style="color:var(--muted)">Pilih game untuk lihat stok akun.</p>
     <div class="grid grid-cols-2 md:grid-cols-5 gap-3 my-4">
       <button class="stock-btn btn-ghost p-3 rounded-lg" data-game="efootball">EFOOTBALL</button>
       <button class="stock-btn btn-ghost p-3 rounded-lg" data-game="pubg">PUBG</button>
@@ -95,21 +94,15 @@
   </section>
 
   <!-- PLAY -->
-  <section id="play" class="py-6">
+  <section id="play" class="py-6 text-center">
     <h2 class="text-2xl font-bold" style="color:var(--neon)">PLAY YOUR GAME</h2>
-    <div class="grid grid-cols-2 md:grid-cols-6 gap-3 mt-4">
-      <button class="play-btn btn-ghost p-3 rounded-lg" data-package="jp.konami.pesam">EFOOTBALL</button>
-      <button class="play-btn btn-ghost p-3 rounded-lg" data-package="com.tencent.ig">PUBG</button>
-      <button class="play-btn btn-ghost p-3 rounded-lg" data-package="com.mobile.legends">MLBB</button>
-      <button class="play-btn btn-ghost p-3 rounded-lg" data-package="com.dts.freefireth">FREE FIRE</button>
-      <button class="play-btn btn-ghost p-3 rounded-lg" data-package="com.tencent.tmgp.sgame">HOK</button>
-    </div>
+    <p style="color:var(--muted)">Not Ready 🚧</p>
   </section>
 
   <!-- APP -->
   <section id="joniapp" class="py-8 text-center">
     <h2 class="text-2xl font-bold" style="color:var(--neon)">JONI APP</h2>
-    <p style="color:var(--muted)">COMING SOON 🚀</p>
+    <p style="color:var(--muted)">Not Ready 🚧</p>
   </section>
 </main>
 
@@ -120,29 +113,19 @@
 
 <script>
 const userWA='6289507676856';
+
 const configs={
   efootball:[
-    {title:'CONFIG CAMERA DRONE',imgs:['./assets/efo1.jpg','./assets/efo2.jpg'],desc:'Sudut Pandang Jauh Cocok Buat Umpan panjang.',link:'https://example.com/efo-pro.zip'},
-    {title:'NEW CONFIG SMOOTH & RESPONSIVE',imgs:['./assets/efo2.jpg','./assets/efo1.jpg'],desc:'SMOOTH & RESPONSIVE.',link:'https://example.com/efo-aim.zip'}
-  ],
-  pubg:[
-    {title:'PUBG Anti Recoil (ComingSoon)',imgs:['./assets/pubg1.jpg','./assets/pubg2.jpg'],desc:'Kontrol recoil lebih mudah (Comingsoon).',link:'https://example.com/pubg-recoil.zip'},
-    {title:'PUBG FPS Boost (ComingSoon)',imgs:['./assets/pubg2.jpg'],desc:'Optimasi fps & frame stability (ComingSoon).',link:'https://example.com/pubg-fps.zip'}
-  ],
-  mlbb:[{title:'MLBB Full Graphics (ComingSoon)',imgs:['./assets/mlbb1.jpg'],desc:'Grafis ultra & smooth (ComingSoon).',link:'https://example.com/mlbb-graphics.zip'}],
-  ff:[{title:'FF Headshot Pro (ComingSoon)',imgs:['./assets/ff1.jpg'],desc:'Akurasi headshot lebih tinggi (ComingSoon).',link:'https://example.com/ff-headshot.zip'}],
-  hok:[{title:'HOK Smooth Battle (ComingSoon)',imgs:['./assets/hok1.jpg'],desc:'Stabil di semua device (ComingSoon).',link:'https://example.com/hok-smooth.zip'}]
+    {title:'EFOOTBALL Smooth Pro',imgs:['./assets/efo1.jpg','./assets/efo2.jpg'],desc:'Stabil & responsif. Cocok kompetisi.',link:'https://example.com/efo-pro.zip'},
+    {title:'EFOOTBALL Aim Pack',imgs:['./assets/efo2.jpg','./assets/efo1.jpg'],desc:'Boost akurasi & aim assist.',link:'https://example.com/efo-aim.zip'}
+  ]
 };
 
 const stocks={
   efootball:[
-    {title:'DUO BLITZ CULLER X LEGENDS RONALDINHO',price:120000,imgs:['./assets/eacc1.jpg','./assets/eacc2.jpg','./assets/eacc3.jpg','./assets/eacc4.jpg'],desc:'Devisi2, pemain Full Epic Booster.'},
-    {title:'SUEREZ (MSN) x NEYMAR (MSN)',price:85000,imgs:['./assets/eacc5.jpg','./assets/eacc6.jpg','./assets/eacc7.jpg','./assets/eacc8.jpg'],desc:'Level 55, banyak pemain iconic, GP dan Coin melimpah.'}
-  ],
-  pubg:[{title:'PUBG -',price:-,imgs:['./assets/pubgacc1.jpg','./assets/pubgacc2.jpg','./assets/pubgacc3.jpg','./assets/pubgacc4.jpg'],desc:'-.'}],
-  mlbb:[{title:'-',price:-,imgs:['./assets/mlbbacc1.jpg','./assets/mlbbacc2.jpg','./assets/mlbbacc3.jpg','./assets/mlbbacc4.jpg'],desc:'-.'}],
-  ff:[{title:'-',price:-,imgs:['./assets/ffacc1.jpg','./assets/ffacc2.jpg','./assets/ffacc3.jpg','./assets/ffacc4.jpg'],desc:'-.'}],
-  hok:[{title:'-',price:-,imgs:['./assets/hokacc1.jpg','./assets/hokacc2.jpg','./assets/hokacc3.jpg','./assets/hokacc4.jpg'],desc:'-.'}]
+    {title:'EFOOTBALL Legend',price:75000,imgs:['./assets/eacc1.jpg','./assets/eacc2.jpg','./assets/eacc3.jpg','./assets/eacc4.jpg'],desc:'Level 50, pemain bintang & GP tinggi.'},
+    {title:'EFOOTBALL Master Elite',price:95000,imgs:['./assets/eacc5.jpg','./assets/eacc6.jpg','./assets/eacc7.jpg','./assets/eacc8.jpg'],desc:'Level 55, banyak pemain iconic, GP dan Coin melimpah.'}
+  ]
 };
 
 function createSliderHTML(imgs){
@@ -167,8 +150,8 @@ function showConfigs(game){
   const placeholder=document.getElementById('configPlaceholder');
   if(placeholder) placeholder.style.display='none';
   target.innerHTML='';
+  if(game!=='efootball'){target.innerHTML=`<div style="color:var(--muted)">Not Ready 🚧</div>`;return;}
   const list=configs[game]||[];
-  if(list.length===0){target.innerHTML=`<div style="color:var(--muted)">Belum ada config untuk game ini.</div>`;return;}
   target.classList.add('animate-fade-in');
   list.forEach(item=>{
     const slider=createSliderHTML(item.imgs);
@@ -198,8 +181,8 @@ document.querySelectorAll('.stock-btn').forEach(btn=>{
 function showStocks(game){
   const target=document.getElementById('stockList');
   target.innerHTML='';
+  if(game!=='efootball'){target.innerHTML=`<div style="color:var(--muted)">Not Ready 🚧</div>`;return;}
   const list=stocks[game]||[];
-  if(list.length===0){target.innerHTML=`<div style="color:var(--muted)">Belum ada stok akun untuk game ini.</div>`;return;}
   list.forEach(a=>{
     const slider=createSliderHTML(a.imgs);
     const html=`
@@ -215,14 +198,6 @@ function showStocks(game){
     target.insertAdjacentHTML('beforeend',html);
   });
 }
-
-/* PLAY */
-document.querySelectorAll('.play-btn').forEach(b=>{
-  b.addEventListener('click',()=>{
-    const pkg=b.dataset.package;
-    window.open(`https://play.google.com/store/apps/details?id=${pkg}`,'_blank');
-  });
-});
 </script>
 </body>
 </html>
