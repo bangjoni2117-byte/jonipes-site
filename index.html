@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>JONI PES - Game Config & Store</title>
   <meta name="description" content="JONI PES - Config game, stok akun, dan Play Your Game. Pembayaran: DANA, OVO, GOPAY, QRIS, BCA.">
+  <link rel="icon" href="./assets/logo.png" type="image/png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
@@ -17,25 +18,23 @@
     body{background:var(--bg); color:#fff; font-family:Inter,system-ui,Arial,Helvetica,sans-serif}
     .no-scrollbar::-webkit-scrollbar{display:none}
     .card{background:var(--card); border:1px solid var(--accent-border)}
-    header a{color:inherit; text-decoration:none}
     .btn-primary{background:var(--neon); color:#000}
     .btn-ghost{background:#2b2b2b; color:#ddd}
-    /* small helpers */
     .rounded-lg{border-radius:12px}
     .shadow-soft{box-shadow:0 6px 18px rgba(0,0,0,.45)}
+    /* slider image sizing */
+    .slide-img{min-width:260px; max-width:420px; height:160px; object-fit:cover; border-radius:10px}
+    @media(min-width:768px){ .slide-img{height:200px} }
   </style>
 </head>
 <body class="antialiased">
 
   <!-- NAV -->
-  <header class="flex items-center justify-between px-4 py-3 sticky top-0 z-50" style="background:rgba(3,3,3,.9);border-bottom:1px solid rgba(255,255,255,.03)">
+  <header class="flex items-center justify-between px-4 py-3 sticky top-0 z-50" style="background:rgba(3,3,3,.95);border-bottom:1px solid rgba(255,255,255,.03)">
     <div class="flex items-center gap-3">
-      <!-- use relative path to assets folder (./assets/logo.png) -->
-      <!-- Favicon untuk tab browser -->
-<img src="./assets/logo.png" 
-     alt="JONI PES" 
-     class="w-12 h-12 rounded" 
-     onerror="this.src='https://placehold.co/80x80/111/0f0?text=Logo+Missing';" />
+      <img src="./assets/logo.png" alt="JONI PES" class="w-12 h-12 rounded" onerror="this.src='https://placehold.co/80x80/111/0f0?text=Logo+Missing';" />
+      <div class="text-lg font-extrabold" style="color:var(--neon)">JONI PES</div>
+    </div>
 
     <nav class="hidden md:flex gap-6 text-sm">
       <a href="#config" class="hover:text-white">CONFIG</a>
@@ -44,27 +43,26 @@
       <a href="#joniapp" class="hover:text-white">JONI APP</a>
     </nav>
 
-    <!-- mobile menu fallback -->
     <div class="md:hidden">
       <button id="menuToggle" class="btn-ghost px-3 py-2 rounded-lg">Menu</button>
     </div>
   </header>
 
-  <!-- HERO -->
   <main class="px-4">
-    <section class="text-center py-12">
-      <h1 class="text-4xl md:text-5xl font-extrabold">Selamat Datang di <span style="color:var(--neon)">JONI PES</span></h1>
-      <p class="mt-3 text-muted" style="color:var(--muted); max-width:800px; margin:10px auto;">
-        Website ini berisi Config per-game, Stok Akun (dengan slideshow), tombol pembayaran (DANA/OVO/GOPAY/QRIS/BCA -> WA), dan Play Your Game.
+    <!-- HERO -->
+    <section class="text-center py-10">
+      <h1 class="text-3xl md:text-4xl font-extrabold">Selamat Datang di <span style="color:var(--neon)">JONI PES</span></h1>
+      <p class="mt-2" style="color:var(--muted); max-width:800px; margin:8px auto;">
+        Config per-game, Stok Akun (slide gambar), tombol pembayaran (DANA/OVO/GOPAY/QRIS/BCA) via WhatsApp, dan Play Your Game.
       </p>
     </section>
 
     <!-- CONFIG -->
-    <section id="config" class="py-8">
-      <h2 class="text-3xl font-bold" style="color:var(--neon)">CONFIG</h2>
-      <p class="text-gray-400 mb-4" style="color:var(--muted)">Pilih game untuk melihat daftar config, gambar dan deskripsi tiap config.</p>
+    <section id="config" class="py-6">
+      <h2 class="text-2xl font-bold" style="color:var(--neon)">CONFIG</h2>
+      <p class="text-sm" style="color:var(--muted)">Pilih game untuk melihat daftar config (slide). Klik <em>Download Config</em> untuk buka link.</p>
 
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-3 my-4">
         <button class="config-btn btn-ghost p-3 rounded-lg" data-game="efootball">EFOOTBALL</button>
         <button class="config-btn btn-ghost p-3 rounded-lg" data-game="pubg">PUBG</button>
         <button class="config-btn btn-ghost p-3 rounded-lg" data-game="mlbb">MLBB</button>
@@ -78,11 +76,11 @@
     </section>
 
     <!-- STOK AKUN -->
-    <section id="stok-akun" class="py-8">
-      <h2 class="text-3xl font-bold" style="color:var(--neon)">STOK AKUN</h2>
-      <p class="text-gray-400 mb-4" style="color:var(--muted)">Pilih game untuk lihat stok akun. Geser gambar untuk melihat detail tiap akun.</p>
+    <section id="stok-akun" class="py-6">
+      <h2 class="text-2xl font-bold" style="color:var(--neon)">STOK AKUN</h2>
+      <p class="text-sm" style="color:var(--muted)">Pilih game untuk lihat stok akun. Geser gambar untuk melihat detail tiap akun.</p>
 
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-3 my-4">
         <button class="stock-btn btn-ghost p-3 rounded-lg" data-game="efootball">EFOOTBALL</button>
         <button class="stock-btn btn-ghost p-3 rounded-lg" data-game="pubg">PUBG</button>
         <button class="stock-btn btn-ghost p-3 rounded-lg" data-game="mlbb">MLBB</button>
@@ -96,8 +94,8 @@
     </section>
 
     <!-- PLAY -->
-    <section id="play" class="py-8">
-      <h2 class="text-3xl font-bold" style="color:var(--neon)">PLAY YOUR GAME</h2>
+    <section id="play" class="py-6">
+      <h2 class="text-2xl font-bold" style="color:var(--neon)">PLAY YOUR GAME</h2>
       <div class="grid grid-cols-2 md:grid-cols-6 gap-3 mt-4">
         <button class="play-btn btn-ghost p-3 rounded-lg" data-package="jp.konami.efootball">EFOOTBALL</button>
         <button class="play-btn btn-ghost p-3 rounded-lg" data-package="com.pubg.imobile">PUBG</button>
@@ -108,68 +106,65 @@
     </section>
 
     <!-- JONI APP -->
-    <section id="joniapp" class="py-12 text-center">
-      <h2 class="text-3xl font-bold" style="color:var(--neon)">JONI APP</h2>
+    <section id="joniapp" class="py-8 text-center">
+      <h2 class="text-2xl font-bold" style="color:var(--neon)">JONI APP</h2>
       <p style="color:var(--muted)">COMING SOON 🚀</p>
     </section>
+
   </main>
 
-  <footer class="py-6 text-center" style="color:var(--muted)">© 2025 JONI PES • Pembayaran: DANA, OVO, GOPAY, QRIS, BCA • WA:
+  <footer class="py-6 text-center" style="color:var(--muted)">
+    © 2025 JONI PES • Pembayaran: DANA, OVO, GOPAY, QRIS, BCA • WA:
     <a href="https://wa.me/6289507676856" style="color:var(--neon)">0895-0767-6856</a>
   </footer>
 
-  <!-- SCRIPTS -->
+  <!-- SCRIPT -->
   <script>
-  // ====== CONFIG & STOCK DATA ======
-  // NOTE: ganti link 'link' pada config dengan link download Anda sendiri (link hasil upload config).
+  // ===== DATA =====
   const userWA = '6289507676856';
 
+  // configs: each item may have multiple images (for slide), title, desc, link
   const configs = {
     efootball: [
-      {title:'EFOOTBALL Config Pro', img:'./assets/efo1.jpg', desc:'Sensitivitas halus dan kontrol lembut.', link:'https://example.com/your-efootball-config-1.zip'},
-      {title:'EFOOTBALL Config Aim', img:'./assets/efo2.jpg', desc:'Rekomendasi untuk turnamen.', link:'https://example.com/your-efootball-config-2.zip'}
+      { title:'EFOOTBALL Smooth Pro', imgs:['./assets/efo1.jpg','./assets/efo2.jpg'], desc:'Stabil & responsif. Cocok kompetisi.', link:'https://example.com/efo-pro.zip' },
+      { title:'EFOOTBALL Aim Pack', imgs:['./assets/efo2.jpg','./assets/efo1.jpg'], desc:'Boost akurasi & aim assist.', link:'https://example.com/efo-aim.zip' }
     ],
     pubg: [
-      {title:'PUBG Config Anti Recoil', img:'./assets/pubg1.jpg', desc:'Kontrol recoil lebih stabil.', link:'https://example.com/your-pubg-config-1.zip'},
-      {title:'PUBG Config FPS Boost', img:'./assets/pubg2.jpg', desc:'Tingkatkan frame rate & respons aim.', link:'https://example.com/your-pubg-config-2.zip'}
+      { title:'PUBG Anti Recoil', imgs:['./assets/pubg1.jpg','./assets/pubg2.jpg'], desc:'Kontrol recoil lebih mudah.', link:'https://example.com/pubg-recoil.zip' },
+      { title:'PUBG FPS Boost', imgs:['./assets/pubg2.jpg'], desc:'Optimasi fps & frame stability.', link:'https://example.com/pubg-fps.zip' }
     ],
     mlbb: [
-      {title:'MLBB Full Graphics', img:'./assets/mlbb1.jpg', desc:'Aktifkan grafis ultra HD.', link:'https://example.com/your-mlbb-config-1.zip'}
+      { title:'MLBB Full Graphics', imgs:['./assets/mlbb1.jpg'], desc:'Grafis ultra & smooth.', link:'https://example.com/mlbb-graphics.zip' }
     ],
     ff: [
-      {title:'FREE FIRE Headshot Pro', img:'./assets/ff1.jpg', desc:'Mudah headshot setiap tembakan.', link:'https://example.com/your-ff-config-1.zip'}
+      { title:'FF Headshot Pro', imgs:['./assets/ff1.jpg'], desc:'Akurasi headshot lebih tinggi.', link:'https://example.com/ff-headshot.zip' }
     ],
     hok: [
-      {title:'HOK Smooth Gameplay', img:'./assets/hok1.jpg', desc:'Stabilitas dan performa tinggi.', link:'https://example.com/your-hok-config-1.zip'}
+      { title:'HOK Smooth Battle', imgs:['./assets/hok1.jpg'], desc:'Stabil di semua device.', link:'https://example.com/hok-smooth.zip' }
     ]
   };
 
+  // stocks: unchanged
   const stocks = {
-    efootball:[
-      {title:'EFOOTBALL Legend', price:75000, imgs:['./assets/eacc1.jpg','./assets/eacc2.jpg','./assets/eacc3.jpg','./assets/eacc4.jpg'], desc:'Level 50, pemain bintang & GP tinggi.'}
-    ],
-    pubg:[
-      {title:'PUBG Elite', price:120000, imgs:['./assets/pubgacc1.jpg','./assets/pubgacc2.jpg','./assets/pubgacc3.jpg','./assets/pubgacc4.jpg'], desc:'Rank Crown, skin langka.'}
-    ],
-    mlbb:[
-      {title:'MLBB Mythic', price:90000, imgs:['./assets/mlbbacc1.jpg','./assets/mlbbacc2.jpg','./assets/mlbbacc3.jpg','./assets/mlbbacc4.jpg'], desc:'Hero lengkap, skin legend.'}
-    ],
-    ff:[
-      {title:'Free Fire Legendary', price:85000, imgs:['./assets/ffacc1.jpg','./assets/ffacc2.jpg','./assets/ffacc3.jpg','./assets/ffacc4.jpg'], desc:'Bundle langka & rank Diamond.'}
-    ],
-    hok:[
-      {title:'HOK Pro Account', price:100000, imgs:['./assets/hokacc1.jpg','./assets/hokacc2.jpg','./assets/hokacc3.jpg','./assets/hokacc4.jpg'], desc:'Semua hero & skin event.'}
-    ]
+    efootball:[{title:'EFOOTBALL Legend', price:75000, imgs:['./assets/eacc1.jpg','./assets/eacc2.jpg','./assets/eacc3.jpg','./assets/eacc4.jpg'], desc:'Level 50, pemain bintang & GP tinggi.'}],
+    pubg:[{title:'PUBG Elite', price:120000, imgs:['./assets/pubgacc1.jpg','./assets/pubgacc2.jpg','./assets/pubgacc3.jpg','./assets/pubgacc4.jpg'], desc:'Rank Crown, skin langka.'}],
+    mlbb:[{title:'MLBB Mythic', price:90000, imgs:['./assets/mlbbacc1.jpg','./assets/mlbbacc2.jpg','./assets/mlbbacc3.jpg','./assets/mlbbacc4.jpg'], desc:'Hero lengkap, skin legend.'}],
+    ff:[{title:'Free Fire Legendary', price:85000, imgs:['./assets/ffacc1.jpg','./assets/ffacc2.jpg','./assets/ffacc3.jpg','./assets/ffacc4.jpg'], desc:'Bundle langka & rank Diamond.'}],
+    hok:[{title:'HOK Pro Account', price:100000, imgs:['./assets/hokacc1.jpg','./assets/hokacc2.jpg','./assets/hokacc3.jpg','./assets/hokacc4.jpg'], desc:'Semua hero & skin event.'}]
   };
 
-  // ====== HELPERS ======
-  function clearActive(selector){
-    document.querySelectorAll(selector).forEach(s=>s.classList.remove('bg-lime-500','text-black'));
+  // ===== HELPERS =====
+  function clearActive(selector){ document.querySelectorAll(selector).forEach(s=>s.classList.remove('bg-lime-500','text-black')); }
+
+  // create slider HTML from imgs array
+  function createSliderHTML(imgs){
+    // horizontal scroll container, images inline
+    return `<div class="flex gap-3 overflow-x-auto no-scrollbar p-1">${imgs.map(i=>`<img src="${i}" class="slide-img" onerror="this.src='https://placehold.co/420x200/111/0f0?text=No+Image';">`).join('')}</div>`;
   }
 
-  // ====== CONFIG BUTTONS ======
+  // ===== CONFIG HANDLERS (baru: mirip stok akun) =====
   document.querySelectorAll('.config-btn').forEach(btn=>{
-    btn.addEventListener('click', e=>{
+    btn.addEventListener('click', ()=>{
       const game = btn.dataset.game;
       showConfigs(game);
       clearActive('.config-btn');
@@ -183,37 +178,32 @@
     target.innerHTML = '';
     const list = configs[game] || [];
     if(list.length === 0){
-      target.innerHTML = "<div style='color:var(--muted)'>Belum ada config untuk game ini.</div>";
-      target.innerHTML += backToConfigButton();
+      target.innerHTML = `<div style="color:var(--muted)">Belum ada config untuk game ini.</div>`;
+      target.insertAdjacentHTML('beforeend', backToConfigButton());
       return;
     }
-    list.forEach(c=>{
+    list.forEach(item=>{
+      const slider = createSliderHTML(item.imgs);
       const html = `
         <div class="card p-4 rounded-lg mb-4 shadow-soft">
-          <img src="${c.img}" alt="${c.title}" class="rounded-lg mb-3 w-full" onerror="this.src='https://placehold.co/600x300/111/0f0?text=No+Image';" />
-          <h3 style="color:var(--neon)" class="text-xl font-bold mb-1">${c.title}</h3>
-          <p style="color:var(--muted)">${c.desc}</p>
+          <h3 style="color:var(--neon)" class="text-xl font-bold mb-2">${item.title}</h3>
+          ${slider}
+          <p style="color:var(--muted)" class="mt-3">${item.desc}</p>
           <div class="mt-3">
-            <a href="${c.link}" target="_blank" class="btn-primary px-3 py-2 rounded-lg">Download Config</a>
+            <a href="${item.link}" target="_blank" rel="noopener" class="btn-primary px-4 py-2 rounded-lg">Download Config</a>
           </div>
         </div>`;
       target.insertAdjacentHTML('beforeend', html);
     });
-    target.innerHTML += backToConfigButton();
+    target.insertAdjacentHTML('beforeend', backToConfigButton());
   }
 
-  function backToConfigButton(){
-    return `<div class="text-center mt-6"><button onclick="resetConfigView()" class="btn-ghost px-4 py-2 rounded-lg">🔙 Kembali ke Pilihan Game</button></div>`;
-  }
+  function backToConfigButton(){ return `<div class="text-center mt-6"><button onclick="resetConfigView()" class="btn-ghost px-4 py-2 rounded-lg">🔙 Kembali ke Pilihan Game</button></div>`; }
+  function resetConfigView(){ document.getElementById('configDetail').innerHTML = `<div id="configPlaceholder" style="color:var(--muted)">Pilih game untuk melihat konfigurasi yang tersedia.</div>`; clearActive('.config-btn'); }
 
-  function resetConfigView(){
-    document.getElementById('configDetail').innerHTML = `<div id="configPlaceholder" style="color:var(--muted)">Pilih game untuk melihat konfigurasi yang tersedia.</div>`;
-    clearActive('.config-btn');
-  }
-
-  // ====== STOCKS ======
+  // ===== STOCK HANDLERS (sama seperti sebelumnya) =====
   document.querySelectorAll('.stock-btn').forEach(btn=>{
-    btn.addEventListener('click', e=>{
+    btn.addEventListener('click', ()=>{
       const game = btn.dataset.game;
       showStocks(game);
       clearActive('.stock-btn');
@@ -226,63 +216,47 @@
     target.innerHTML = '';
     const list = stocks[game] || [];
     if(list.length === 0){
-      target.innerHTML = "<div style='color:var(--muted)'>Belum ada stok akun untuk game ini.</div>";
-      target.innerHTML += backToStockButton();
+      target.innerHTML = `<div style="color:var(--muted)">Belum ada stok akun untuk game ini.</div>`;
+      target.insertAdjacentHTML('beforeend', backToStockButton());
       return;
     }
-
     list.forEach(a=>{
-      const imgsHtml = a.imgs.map(i=>`<img src="${i}" class="h-40 rounded-lg" onerror="this.src='https://placehold.co/300x200/111/0f0?text=No+Image';" />`).join('');
+      const slider = createSliderHTML(a.imgs);
       const html = `
         <div class="card p-4 rounded-lg mb-6 shadow-soft">
           <h3 style="color:var(--neon)" class="text-xl font-bold mb-2">${a.title}</h3>
-          <div class="flex gap-3 overflow-x-auto no-scrollbar p-1">
-            ${imgsHtml}
-          </div>
+          ${slider}
           <p style="color:var(--neon)" class="mt-3 font-bold">Rp ${a.price.toLocaleString()}</p>
           <p style="color:var(--muted)">${a.desc}</p>
           <div class="mt-3">
-            <!-- tombol beli --> 
             <button onclick="buyAccount('${a.title}')" class="btn-primary px-4 py-2 rounded-lg">Beli Akun</button>
           </div>
         </div>`;
       target.insertAdjacentHTML('beforeend', html);
     });
-
-    target.innerHTML += backToStockButton();
+    target.insertAdjacentHTML('beforeend', backToStockButton());
   }
 
-  function backToStockButton(){
-    return `<div class="text-center mt-6"><button onclick="resetStockView()" class="btn-ghost px-4 py-2 rounded-lg">🔙 Kembali ke Pilihan Game</button></div>`;
-  }
-
-  function resetStockView(){
-    document.getElementById('stockList').innerHTML = `<div style="color:var(--muted)">Pilih game untuk lihat stok akun.</div>`;
-    clearActive('.stock-btn');
-  }
+  function backToStockButton(){ return `<div class="text-center mt-6"><button onclick="resetStockView()" class="btn-ghost px-4 py-2 rounded-lg">🔙 Kembali ke Pilihan Game</button></div>`; }
+  function resetStockView(){ document.getElementById('stockList').innerHTML = `<div style="color:var(--muted)">Pilih game untuk lihat stok akun.</div>`; clearActive('.stock-btn'); }
 
   function buyAccount(title){
     const teks = encodeURIComponent('Saya ingin beli akun ' + title + ' - via DANA/OVO/GOPAY/QRIS/BCA');
     window.open('https://wa.me/' + '62' + userWA.replace(/^0/,'') + '?text=' + teks, '_blank');
   }
 
-  // ====== PLAY BUTTONS ======
+  // ===== PLAY =====
   document.querySelectorAll('.play-btn').forEach(b=>{
     b.addEventListener('click', ()=>{
       const pkg = b.dataset.package;
-      // buka playstore
       const store = `https://play.google.com/store/apps/details?id=${pkg}`;
       window.open(store, '_blank');
     });
   });
 
-  // ====== small menu toggle for mobile (optional) ======
-  document.getElementById('menuToggle')?.addEventListener('click', ()=>{
-    alert('Gunakan link menu di bagian atas untuk navigasi (mobile view).');
-  });
+  // ===== mobile menu =====
+  document.getElementById('menuToggle')?.addEventListener('click', ()=>{ alert('Gunakan link menu di bagian atas untuk navigasi.'); });
 
-  // optional: highlight first tab (you can change)
-  // document.querySelector('.config-btn')?.classList.add('bg-lime-500','text-black');
   </script>
 </body>
 </html>
