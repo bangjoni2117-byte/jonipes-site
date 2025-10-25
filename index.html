@@ -131,78 +131,68 @@
   </footer>
 
   <script>
-  const userWA = '6289507676856';
-  const configs = {
-    efootball: [
-      { title:'EFOOTBALL Smooth Pro', imgs:['./assets/efo1.jpg','./assets/efo2.jpg'], desc:'Stabil & responsif. Cocok kompetisi.', link:'https://example.com/efo-pro.zip' },
-      { title:'EFOOTBALL Aim Pack', imgs:['./assets/efo2.jpg','./assets/efo1.jpg'], desc:'Boost akurasi & aim assist.', link:'https://example.com/efo-aim.zip' }
-    ],
-    pubg: [
-      { title:'PUBG Anti Recoil', imgs:['./assets/pubg1.jpg','./assets/pubg2.jpg'], desc:'Kontrol recoil lebih mudah.', link:'https://example.com/pubg-recoil.zip' },
-      { title:'PUBG FPS Boost', imgs:['./assets/pubg2.jpg'], desc:'Optimasi fps & frame stability.', link:'https://example.com/pubg-fps.zip' }
-    ],
-    mlbb: [
-      { title:'MLBB Full Graphics', imgs:['./assets/mlbb1.jpg'], desc:'Grafis ultra & smooth.', link:'https://example.com/mlbb-graphics.zip' }
-    ],
-    ff: [
-      { title:'FF Headshot Pro', imgs:['./assets/ff1.jpg'], desc:'Akurasi headshot lebih tinggi.', link:'https://example.com/ff-headshot.zip' }
-    ],
-    hok: [
-      { title:'HOK Smooth Battle', imgs:['./assets/hok1.jpg'], desc:'Stabil di semua device.', link:'https://example.com/hok-smooth.zip' }
-    ]
+  const userWA='6289507676856';
+  const configs={
+    efootball:[{title:'EFOOTBALL Smooth Pro',imgs:['./assets/efo1.jpg','./assets/efo2.jpg'],desc:'Stabil & responsif. Cocok kompetisi.',link:'https://example.com/efo-pro.zip'},
+                {title:'EFOOTBALL Aim Pack',imgs:['./assets/efo2.jpg','./assets/efo1.jpg'],desc:'Boost akurasi & aim assist.',link:'https://example.com/efo-aim.zip'}],
+    pubg:[{title:'PUBG Anti Recoil',imgs:['./assets/pubg1.jpg','./assets/pubg2.jpg'],desc:'Kontrol recoil lebih mudah.',link:'https://example.com/pubg-recoil.zip'},
+          {title:'PUBG FPS Boost',imgs:['./assets/pubg2.jpg'],desc:'Optimasi fps & frame stability.',link:'https://example.com/pubg-fps.zip'}],
+    mlbb:[{title:'MLBB Full Graphics',imgs:['./assets/mlbb1.jpg'],desc:'Grafis ultra & smooth.',link:'https://example.com/mlbb-graphics.zip'}],
+    ff:[{title:'FF Headshot Pro',imgs:['./assets/ff1.jpg'],desc:'Akurasi headshot lebih tinggi.',link:'https://example.com/ff-headshot.zip'}],
+    hok:[{title:'HOK Smooth Battle',imgs:['./assets/hok1.jpg'],desc:'Stabil di semua device.',link:'https://example.com/hok-smooth.zip'}]
   };
-  const stocks = {
-    efootball:[{title:'EFOOTBALL Legend', price:75000, imgs:['./assets/eacc1.jpg','./assets/eacc2.jpg','./assets/eacc3.jpg','./assets/eacc4.jpg'], desc:'Level 50, pemain bintang & GP tinggi.'}],
-    pubg:[{title:'PUBG Elite', price:120000, imgs:['./assets/pubgacc1.jpg','./assets/pubgacc2.jpg','./assets/pubgacc3.jpg','./assets/pubgacc4.jpg'], desc:'Rank Crown, skin langka.'}],
-    mlbb:[{title:'MLBB Mythic', price:90000, imgs:['./assets/mlbbacc1.jpg','./assets/mlbbacc2.jpg','./assets/mlbbacc3.jpg','./assets/mlbbacc4.jpg'], desc:'Hero lengkap, skin legend.'}],
-    ff:[{title:'Free Fire Legendary', price:85000, imgs:['./assets/ffacc1.jpg','./assets/ffacc2.jpg','./assets/ffacc3.jpg','./assets/ffacc4.jpg'], desc:'Bundle langka & rank Diamond.'}],
-    hok:[{title:'HOK Pro Account', price:100000, imgs:['./assets/hokacc1.jpg','./assets/hokacc2.jpg','./assets/hokacc3.jpg','./assets/hokacc4.jpg'], desc:'Semua hero & skin event.'}]
+  const stocks={
+    efootball:[{title:'EFOOTBALL Legend',price:75000,imgs:['./assets/eacc1.jpg','./assets/eacc2.jpg','./assets/eacc3.jpg','./assets/eacc4.jpg'],desc:'Level 50, pemain bintang & GP tinggi.'}],
+    pubg:[{title:'PUBG Elite',price:120000,imgs:['./assets/pubgacc1.jpg','./assets/pubgacc2.jpg','./assets/pubgacc3.jpg','./assets/pubgacc4.jpg'],desc:'Rank Crown, skin langka.'}],
+    mlbb:[{title:'MLBB Mythic',price:90000,imgs:['./assets/mlbbacc1.jpg','./assets/mlbbacc2.jpg','./assets/mlbbacc3.jpg','./assets/mlbbacc4.jpg'],desc:'Hero lengkap, skin legend.'}],
+    ff:[{title:'Free Fire Legendary',price:85000,imgs:['./assets/ffacc1.jpg','./assets/ffacc2.jpg','./assets/ffacc3.jpg','./assets/ffacc4.jpg'],desc:'Bundle langka & rank Diamond.'}],
+    hok:[{title:'HOK Pro Account',price:100000,imgs:['./assets/hokacc1.jpg','./assets/hokacc2.jpg','./assets/hokacc3.jpg','./assets/hokacc4.jpg'],desc:'Semua hero & skin event.'}]
   };
 
   function createSliderHTML(imgs){return `<div class="flex gap-3 overflow-x-auto no-scrollbar p-1">${imgs.map(i=>`<img src="${i}" class="slide-img" onerror="this.src='https://placehold.co/420x200/111/0f0?text=No+Image';">`).join('')}</div>`;}
   function buyAccount(title){
-    const teks = encodeURIComponent('Saya ingin beli akun ' + title + ' - via DANA/OVO/GOPAY/QRIS/BCA');
-    window.open('https://wa.me/' + '62' + userWA.replace(/^0/,'') + '?text=' + teks, '_blank');
+    const teks=encodeURIComponent('Saya ingin beli akun '+title+' - via DANA/OVO/GOPAY/QRIS/BCA');
+    window.open('https://wa.me/'+'62'+userWA.replace(/^0/,'')+'?text='+teks,'_blank');
   }
 
   /* CONFIG */
   document.querySelectorAll('.config-btn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const game = btn.dataset.game;
+    btn.addEventListener('click',()=>{
+      const game=btn.dataset.game;
       showConfigs(game);
       document.querySelectorAll('.config-btn').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
     });
   });
   function showConfigs(game){
-    const target = document.getElementById('configDetail');
-    document.getElementById('configPlaceholder').style.display='none';
-    target.classList.add('opacity-0','translate-y-3');
-    setTimeout(()=>{
-      target.innerHTML='';
-      const list=configs[game]||[];
-      if(list.length===0){target.innerHTML=`<div style="color:var(--muted)">Belum ada config untuk game ini.</div>`;}
-      else list.forEach(item=>{
-        const slider=createSliderHTML(item.imgs);
-        const html=`
-        <div class="card p-4 rounded-lg mb-6 shadow-soft animate-fade-in">
-          <h3 class="text-xl font-bold mb-2" style="color:var(--neon)">${item.title}</h3>
-          ${slider}
-          <p class="mt-3" style="color:var(--muted)">${item.desc}</p>
-          <div class="mt-3">
-            <a href="${item.link}" target="_blank" class="btn-primary px-4 py-2 rounded-lg">Download Config</a>
-          </div>
-        </div>`;
-        target.insertAdjacentHTML('beforeend',html);
-      });
-      target.classList.remove('opacity-0','translate-y-3');
-    },150);
+    const target=document.getElementById('configDetail');
+    const placeholder=document.getElementById('configPlaceholder');
+    if(placeholder) placeholder.style.display='none';
+    target.classList.remove('opacity-0','translate-y-3');
+    target.innerHTML='';
+    const list=configs[game]||[];
+    if(list.length===0){target.innerHTML=`<div style="color:var(--muted)">Belum ada config untuk game ini.</div>`;return;}
+    target.classList.add('animate-fade-in');
+    list.forEach(item=>{
+      const slider=createSliderHTML(item.imgs);
+      const html=`
+      <div class="card p-4 rounded-lg mb-6 shadow-soft">
+        <h3 class="text-xl font-bold mb-2" style="color:var(--neon)">${item.title}</h3>
+        ${slider}
+        <p class="mt-3" style="color:var(--muted)">${item.desc}</p>
+        <div class="mt-3">
+          <a href="${item.link}" target="_blank" class="btn-primary px-4 py-2 rounded-lg">Download Config</a>
+        </div>
+      </div>`;
+      target.insertAdjacentHTML('beforeend',html);
+    });
+    setTimeout(()=>target.classList.remove('animate-fade-in'),500);
   }
 
   /* STOK */
   document.querySelectorAll('.stock-btn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const game = btn.dataset.game;
+    btn.addEventListener('click',()=>{
+      const game=btn.dataset.game;
       showStocks(game);
       document.querySelectorAll('.stock-btn').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
@@ -231,7 +221,7 @@
 
   /* PLAY */
   document.querySelectorAll('.play-btn').forEach(b=>{
-    b.addEventListener('click', ()=>{
+    b.addEventListener('click',()=>{
       const pkg=b.dataset.package;
       window.open(`https://play.google.com/store/apps/details?id=${pkg}`,'_blank');
     });
