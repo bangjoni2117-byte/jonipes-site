@@ -8,27 +8,36 @@
   <link rel="icon" href="./assets/logo.png" type="image/png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root{
-      --bg:#050505;--card:#0b0b0b;--neon:#a7ff35;--muted:#9aa0a6;
-      --accent-border: rgba(167,255,53,.06);
+    :root {
+      --bg:#050505;
+      --card:#0b0b0b;
+      --neon:#a7ff35;
+      --muted:#9aa0a6;
+      --accent-border:rgba(167,255,53,.06);
     }
-    body{background:var(--bg);color:#fff;font-family:Inter,system-ui,Arial,Helvetica,sans-serif}
-    .no-scrollbar::-webkit-scrollbar{display:none}
-    .card{background:var(--card);border:1px solid var(--accent-border)}
-    .btn-primary{background:var(--neon);color:#000}
-    .btn-ghost{background:#2b2b2b;color:#ddd}
-    .rounded-lg{border-radius:12px}
-    .shadow-soft{box-shadow:0 6px 18px rgba(0,0,0,.45)}
-    .slide-img{min-width:260px;max-width:420px;height:160px;object-fit:cover;border-radius:10px}
+    body {
+      background:var(--bg);
+      color:#fff;
+      font-family:Inter,system-ui,Arial,Helvetica,sans-serif;
+    }
+    .no-scrollbar::-webkit-scrollbar {display:none}
+    .card {background:var(--card);border:1px solid var(--accent-border)}
+    .btn-primary {background:var(--neon);color:#000}
+    .btn-ghost {background:#2b2b2b;color:#ddd}
+    .rounded-lg {border-radius:12px}
+    .shadow-soft {box-shadow:0 6px 18px rgba(0,0,0,.45)}
+    .slide-img {min-width:260px;max-width:420px;height:160px;object-fit:cover;border-radius:10px}
     @media(min-width:768px){.slide-img{height:200px}}
-    #configDetail,#stockList{transition:all .3s ease}
+    #configDetail,#stockList {transition:all .3s ease}
     @keyframes fade-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
     .animate-fade-in{animation:fade-in .4s ease both}
     .config-btn.active,.stock-btn.active{
-      background:var(--neon);color:#000;
-      box-shadow:0 0 12px rgba(167,255,53,.6);transition:all .25s ease;
+      background:var(--neon);
+      color:#000;
+      box-shadow:0 0 12px rgba(167,255,53,.6);
+      transition:all .25s ease;
     }
-    html{scroll-behavior:smooth}
+    html {scroll-behavior:smooth}
   </style>
 </head>
 <body class="antialiased">
@@ -105,16 +114,16 @@ const userWA='6289507676856';
 const configs={
   efootball:[
     {
-      title:'CONFIG CAMERA DRONE UPDATE, FIX LAG',
+      title:'CONFIG CAMERA DRONE UPDATE, FIX LAG 🔥',
       imgs:['./assets/efo1.jpg','./assets/efo2.jpg'],
-      desc:'Kamera drone versi terbaru. Sudut pandang luas & respons lebih stabil. Mengurangi lag saat pertandingan.',
-      link:'https://example.com/config-drone.zip'
+      desc:'Kamera drone versi terbaru. Sudut pandang luas & respons stabil. Mengurangi lag saat pertandingan.',
+      link:'https://example.com/config-drone.zip' // 🔗 Ganti link ini nanti
     },
     {
       title:'CONFIG SMOOTH FIX DELAY NO LAG (NEXT UPDATE)',
       imgs:['./assets/efo3.jpg','./assets/efo4.jpg'],
       desc:'Versi baru untuk perbaikan delay & optimasi performa. Akan rilis pada update berikutnya.',
-      link:'#'
+      link:'https://example.com/config-smooth.zip' // 🔗 Ganti link ini nanti
     }
   ]
 };
@@ -137,7 +146,9 @@ const stocks={
 };
 
 function createSliderHTML(imgs){
-  return `<div class="flex gap-3 overflow-x-auto no-scrollbar p-1">${imgs.map(i=>`<img src="${i}" class="slide-img" onerror="this.src='https://placehold.co/420x200/111/0f0?text=No+Image';">`).join('')}</div>`;
+  return `<div class="flex gap-3 overflow-x-auto no-scrollbar p-1">
+    ${imgs.map(i=>`<img src="${i}" class="slide-img" onerror="this.src='https://placehold.co/420x200/111/0f0?text=No+Image';">`).join('')}
+  </div>`;
 }
 function buyAccount(title){
   const teks=encodeURIComponent('Saya ingin beli akun '+title+' - via DANA/OVO/GOPAY/QRIS/BCA');
