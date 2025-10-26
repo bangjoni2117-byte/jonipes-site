@@ -15,11 +15,7 @@
       --muted:#9aa0a6;
       --accent-border:rgba(167,255,53,.06);
     }
-    body {
-      background:var(--bg);
-      color:#fff;
-      font-family:Inter,system-ui,Arial,Helvetica,sans-serif;
-    }
+    body {background:var(--bg);color:#fff;font-family:Inter,system-ui,Arial,Helvetica,sans-serif;}
     .no-scrollbar::-webkit-scrollbar {display:none}
     .card {background:var(--card);border:1px solid var(--accent-border)}
     .btn-primary {background:var(--neon);color:#000}
@@ -117,13 +113,13 @@ const configs={
       title:'CONFIG CAMERA DRONE UPDATE, FIX LAG 🔥',
       imgs:['./assets/efo1.jpg','./assets/efo2.jpg'],
       desc:'Kamera drone versi terbaru. Sudut pandang luas & respons stabil. Mengurangi lag saat pertandingan.',
-      link:'https://example.com/config-drone.zip' // 🔗 Ganti link ini nanti
+      link:'https://example.com/config-drone.zip'
     },
     {
       title:'CONFIG SMOOTH FIX DELAY NO LAG (NEXT UPDATE)',
       imgs:['./assets/efo3.jpg','./assets/efo4.jpg'],
       desc:'Versi baru untuk perbaikan delay & optimasi performa. Akan rilis pada update berikutnya.',
-      link:'https://example.com/config-smooth.zip' // 🔗 Ganti link ini nanti
+      link:'https://example.com/config-smooth.zip'
     }
   ]
 };
@@ -140,15 +136,13 @@ const stocks={
       title:'EFO#002 NEYMAR × SUAREZ (MSN)',
       price:120000,
       imgs:['./assets/eacc5.jpg','./assets/eacc6.jpg','./assets/eacc7.jpg','./assets/eacc8.jpg'],
-      desc:'Divisi 2, banyak pemain iconic, kombinasi MSN legendaris.<br>Performa stabil, cocok untuk push divisi & turnamen.'
+      desc:'Divisi 2, banyak pemain iconic.<br>Kombinasi MSN (Neymar × Suarez × Messi) full Epic.<br>Squad stabil dan cocok untuk kompetisi atau push divisi.'
     }
   ]
 };
 
 function createSliderHTML(imgs){
-  return `<div class="flex gap-3 overflow-x-auto no-scrollbar p-1">
-    ${imgs.map(i=>`<img src="${i}" class="slide-img" onerror="this.src='https://placehold.co/420x200/111/0f0?text=No+Image';">`).join('')}
-  </div>`;
+  return `<div class="flex gap-3 overflow-x-auto no-scrollbar p-1">${imgs.map(i=>`<img src="${i}" class="slide-img" onerror="this.src='https://placehold.co/420x200/111/0f0?text=No+Image';">`).join('')}</div>`;
 }
 function buyAccount(title){
   const teks=encodeURIComponent('Saya ingin beli akun '+title+' - via DANA/OVO/GOPAY/QRIS/BCA');
